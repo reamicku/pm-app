@@ -10,11 +10,12 @@ start_time = time.time()
 
 
 
-print_with_time("=== LOAD MODEL")
-pipe = pipeline(model="unsloth/Llama-3.2-1B-Instruct", device_map="auto")
+MODEL_NAME = "unsloth/Llama-3.2-1B-Instruct"
+print_with_time(f"Loading model {MODEL_NAME}")
+pipe = pipeline(model=MODEL_NAME, device_map="auto")
 
-print_with_time("=== PREPARE PIPELINE")
+print_with_time("Prepare pipeline")
 output = pipe("How do Large Language Models work?", do_sample=True, top_p=0.95, max_new_tokens=500)
 
-print_with_time("=== START INFERENCE")
+print_with_time("Begin inference")
 print_with_time(f"Output: {output}")
